@@ -19,8 +19,6 @@ const spinner = document.querySelector('.spin-container')
 const submitBtn = document.getElementById('generateBtn')
 
 submitBtn.addEventListener('click', () => {
-    console.log('click');
-    
     spinner.classList.add('spinning');
 })
 
