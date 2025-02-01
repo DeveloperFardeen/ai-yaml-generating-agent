@@ -1,0 +1,6 @@
+# Ignore this folders
+
+myenv/
+test/
+backup/
+__pycache__/

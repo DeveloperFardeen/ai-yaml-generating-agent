@@ -1,0 +1,213 @@
+:root {
+    --neon-blue: #00f3ff;
+    --dark-bg: #0a0a1f;
+    --card-bg: #12122a;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: var(--dark-bg);
+    color: #fff;
+    min-height: 100vh;
+    position: relative;
+}
+
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.ai-card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 0 20px rgba(0, 243, 255, 0.1);
+    border: 1px solid rgba(0, 243, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--neon-blue);
+    text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+    font-size: 2.5rem;
+}
+
+.input-group {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.input-group label {
+    color: var(--neon-blue);
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.input-field {
+    width: 100%;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 243, 255, 0.2);
+    border-radius: 8px;
+    color: #fff;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: var(--neon-blue);
+    box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+}
+
+textarea.input-field {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.generate-btn {
+    width: 100%;
+    padding: 1rem;
+    background: transparent;
+    border: 2px solid var(--neon-blue);
+    color: var(--neon-blue);
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.generate-btn:hover {
+    background: var(--neon-blue);
+    color: var(--dark-bg);
+    box-shadow: 0 0 20px rgba(0, 243, 255, 0.4);
+}
+
+.generate-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.output-container {
+    margin-top: 2rem;
+    position: relative;
+}
+
+.code-container {
+    position: relative;
+    margin: 20px 0;
+}
+.copy-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #2d2d2d;
+    color: #ffffff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.copy-button:hover {
+    background-color: #3d3d3d;
+}
+.button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 4px;
+    display: inline-block;
+    margin-top: 20px;
+}
+.button:hover {
+    background-color: #45a049;
+}
+h1 {
+    color: #ffffff;
+}
+/* YAML Syntax Highlighting */
+.token.key { color: #ff79c6; }
+.token.value { color: #50fa7b; }
+.token.string { color: #50fa7b; }
+.token.number { color: #bd93f9; }
+.token.boolean { color: #6495ed; }
+
+#yamlOutput {
+    width: 100%;
+    min-height: 200px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    padding: 1rem;
+    font-family: 'Courier New', monospace;
+    color: #fff;
+    border: 1px solid rgba(0, 243, 255, 0.2);
+    white-space: pre-wrap;
+}
+
+.loading {
+    display: none;
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.ai-loader {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+    border: 3px solid transparent;
+    border-top-color: var(--neon-blue);
+    border-radius: 50%;
+    animation: ai-spin 1s linear infinite;
+}
+
+.ai-loader:before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border: 3px solid transparent;
+    border-top-color: rgba(0, 243, 255, 0.5);
+    border-radius: 50%;
+    animation: ai-spin 2s linear infinite;
+}
+
+@keyframes ai-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(0, 243, 255, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(0, 243, 255, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(0, 243, 255, 0); }
+}

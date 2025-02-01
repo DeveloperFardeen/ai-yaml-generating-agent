@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI YAML Generator</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/spin.css">
+</head>
+<body>
+    <div id="particles-js"></div>
+    <div class="container">
+        <div class="ai-card">
+            <h1 class="title">AI YAML Generator</h1>
+            
+            <form id="prompt-form" action="/generate" method="POST">
+                <div class="input-group">
+                    <label>Deployment Description</label>
+                    <textarea id="prompt" name="prompt" class="input-field" placeholder="Describe your deployment (e.g., Node.js service with auto-scaling and 1 GB memory)" required></textarea>
+                </div>
+                
+                <input type="submit" id="generateBtn" class="generate-btn pulse" value="Generate Configuration">
+            
+            </form>
+            
+            <div class="code-container">
+                <div class="spin-container">
+                    <span class="spin-span"></span>
+                    <span class="spin-span"></span>
+                    <span class="spin-span"></span>
+                    <span class="spin-span"></span>
+                </div>
+                <div id="yamlOutput">
+                <button class="copy-button" onclick="copyCode()">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                </button>
+                <pre><code id="yaml-content" class="language-yaml">{{ yaml_config | replace(":", ": ") | replace("true", '<span class="yaml-boolean">true</span>') | replace("false", '<span class="yaml-boolean">false</span>') | replace('"', '') | replace('\n', '\n') | safe }}</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-yaml.min.js"></script>
+
+    <script src="/static/particle.js"></script>
+    <script src="/static/app.js"></script>
+    <script src="/static/script.js"></script>
+</body>
+</html>
