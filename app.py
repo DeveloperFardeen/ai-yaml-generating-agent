@@ -1,10 +1,12 @@
 # app.py
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, jsonify
+from flask_cors import CORS
 import google.generativeai as genai
 import yaml
 from pathlib import Path
 
 app = Flask(__name__)
+CORS(app)  # Enable CORS for all domains
 
 # Initialize Gemini API
 def init_gemini(api_key):
@@ -58,7 +60,7 @@ def generate():
         model = init_gemini(api_key)
         yaml_config = prompt_to_yaml(model, prompt)
         yaml_config = clean_yaml_block(yaml_config)
-        return render_template('index.html', yaml_config=yaml_config)
+        return render_template('index.html', yaml_config=yaml_config, prompt=prompt)
     except Exception as e:
         return f"Error: {str(e)}", 500
 

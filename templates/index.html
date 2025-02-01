@@ -16,7 +16,11 @@
             <form id="prompt-form" action="/generate" method="POST">
                 <div class="input-group">
                     <label>Deployment Description</label>
+                    {% if prompt %}
+                    <textarea id="prompt" name="prompt" class="input-field" required>{{ prompt }}</textarea>
+                    {% else %}
                     <textarea id="prompt" name="prompt" class="input-field" placeholder="Describe your deployment (e.g., Node.js service with auto-scaling and 1 GB memory)" required></textarea>
+                    {% endif %}
                 </div>
                 
                 <input type="submit" id="generateBtn" class="generate-btn pulse" value="Generate Configuration">
